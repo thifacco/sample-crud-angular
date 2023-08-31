@@ -7,6 +7,12 @@ Essa aplicação é uma amostra de como desenvolver um CRUD simples com Angular 
 npm start
 ```
 
+Iniciar o backend: 
+```
+cd ./backend
+json-server db.json
+```
+
 ## Rodar os testes unitários
 ```
 npm run test
