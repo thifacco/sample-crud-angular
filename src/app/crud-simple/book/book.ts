@@ -1,8 +1,8 @@
 export interface IBook {
-   id: number | undefined;
-   title: string | undefined;
-   author: string | undefined;
-   publishing_company: string | undefined;
-   release_year: number | undefined;
-   pages: number | undefined;
+   id: string;
+   title: string;
+   author: string;
+   publishing_company: string;
+   release_year: number;
+   pages: number;
 }

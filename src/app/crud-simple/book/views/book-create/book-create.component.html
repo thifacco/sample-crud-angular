@@ -1,1 +1,30 @@
-<p>book-create works!</p>
+<form [formGroup]="createBookForm" (ngSubmit)="onSubmit()">
+
+   <mat-form-field>
+      <mat-label>Título</mat-label>
+      <input matInput placeholder="Ex. Mais Tempo Mais Dinheiro" formControlName="title">
+   </mat-form-field>
+
+   <mat-form-field>
+      <mat-label>Autor</mat-label>
+      <input matInput placeholder="Ex. Gustavo Cerbasi" formControlName="author">
+   </mat-form-field>
+
+   <mat-form-field>
+      <mat-label>Editora</mat-label>
+      <input matInput placeholder="Ex. Alta Books" formControlName="publishing_company">
+   </mat-form-field>
+
+   <mat-form-field>
+      <mat-label>Ano de lançamento</mat-label>
+      <input matInput placeholder="Ex. 2020" formControlName="release_year">
+   </mat-form-field>
+
+   <mat-form-field>
+      <mat-label>Páginas</mat-label>
+      <input matInput placeholder="Ex. 240" formControlName="pages">
+   </mat-form-field>
+
+   <button type="submit" mat-raised-button color="primary">Salvar</button>
+
+</form>

@@ -8,6 +8,11 @@ import { BookCreateComponent } from './views/book-create/book-create.component';
 import { BookService } from './book.service';
 import { MatTableModule } from '@angular/material/table';
 import { HttpClientModule } from '@angular/common/http';
+import { MatListModule } from '@angular/material/list';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -19,7 +24,13 @@ import { HttpClientModule } from '@angular/common/http';
     CommonModule,
     HttpClientModule,
     BookRoutingModule,
-    MatTableModule
+    MatTableModule,
+    MatListModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatButtonModule
   ],
   providers: [
     BookService

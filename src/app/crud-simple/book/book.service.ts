@@ -9,11 +9,15 @@ import { IBook } from './book';
 })
 export class BookService {
 
-  private readonly dbHostBooks = `${environment.databaseURL}/books`;
+  private readonly bookAPI = `${environment.databaseURL}/books`;
 
   constructor(private http: HttpClient) { }
 
   getAll(): Observable<IBook> {
-    return this.http.get<IBook>(this.dbHostBooks);
+    return this.http.get<IBook>(this.bookAPI);
+  }
+
+  create(book: IBook): Observable<IBook> {
+    return this.http.post<IBook>(this.bookAPI, book);
   }
 }
