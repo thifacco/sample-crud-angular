@@ -1,0 +1,22 @@
+<table>
+   <thead>
+      <tr>
+         <th>Título</th>
+         <th>Autor</th>
+         <th>Editora</th>
+         <th>Ano de lançamento</th>
+         <th>Páginas</th>
+         <th></th>
+      </tr>
+   </thead>
+   <tbody>
+      <tr *ngFor="let book of bookList$ | async as books">
+         <td>{{ book.title }}</td>
+         <td>{{ book.author }}</td>
+         <td>{{ book.publishing_company }}</td>
+         <td>{{ book.release_year }}</td>
+         <td>{{ book.pages }}</td>
+         <td></td>
+      </tr>
+   </tbody>
+</table>

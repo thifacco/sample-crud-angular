@@ -1,19 +1,15 @@
-import { Component } from '@angular/core';
-import { BookService } from './book.service';
-import { tap } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-book',
   templateUrl: './book.component.html',
   styleUrls: ['./book.component.scss']
 })
-export class BookComponent {
+export class BookComponent implements OnInit {
 
-  bookList$ = this.bookService.getAll().pipe(
-    tap(console.log)
-  );
-  
-  constructor(private bookService: BookService) {}
+  constructor() { }
 
-
+  ngOnInit(): void {
+    // @todo: se bater aqui sem rota filha, redirecionar para /list
+  }
 }
