@@ -25,6 +25,7 @@
       <input matInput placeholder="Ex. 240" formControlName="pages">
    </mat-form-field>
 
-   <button type="submit" mat-raised-button color="primary">Salvar</button>
+   <button type="submit" mat-raised-button color="primary" 
+      [disabled]="!createBookForm.valid">Salvar</button>
 
 </form>

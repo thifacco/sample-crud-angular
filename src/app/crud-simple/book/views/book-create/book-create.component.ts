@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { BookService } from '../../book.service';
 import { nanoid } from 'nanoid';
 import { IBook } from '../../book';
@@ -12,16 +12,17 @@ import { Router } from '@angular/router';
 })
 export class BookCreateComponent {
 
-  createBookForm = new FormGroup({
-    title: new FormControl(),
-    author: new FormControl(),
-    publishing_company: new FormControl(),
-    release_year: new FormControl(),
-    pages: new FormControl()
+  createBookForm = this.formBuilder.group({
+    title: ['', Validators.required],
+    author: ['', Validators.required],
+    publishing_company: ['', Validators.required],
+    release_year: [null, Validators.required],
+    pages: [null, Validators.required]
   });
 
   constructor(
     private bookService: BookService,
+    private formBuilder: FormBuilder,
     private router: Router
   ) { }
 
@@ -30,11 +31,11 @@ export class BookCreateComponent {
 
     const newBook: IBook = {
       id: nanoid(),
-      title: this.createBookForm.value.title,
-      author: this.createBookForm.value.author,
-      publishing_company: this.createBookForm.value.publishing_company,
-      release_year: this.createBookForm.value.release_year,
-      pages: this.createBookForm.value.pages
+      title: this.createBookForm.value.title as string,
+      author: this.createBookForm.value.author as string,
+      publishing_company: this.createBookForm.value.publishing_company as string,
+      release_year: this.createBookForm.value.release_year!,
+      pages: this.createBookForm.value.pages!
     }
 
     try {
