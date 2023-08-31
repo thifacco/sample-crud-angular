@@ -1,3 +1,20 @@
 {
-   "products": []
+  "books": [
+    {
+      "id": 1,
+      "title": "A Psicologia Financeira",
+      "author": "Morgan Housel",
+      "publishing_company": "Harper Collins",
+      "release_year": "2022",
+      "pages": 230
+    },
+    {
+      "id": 2,
+      "title": "O Poder do Hábito",
+      "author": "Charles Duhigg",
+      "publishing_company": "Objetiva",
+      "release_year": "2015",
+      "pages": 400
+    }
+  ]
 }
