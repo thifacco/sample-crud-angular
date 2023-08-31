@@ -10,7 +10,7 @@ npm start
 Iniciar o backend: 
 ```
 cd ./backend
-json-server db.json
+json-server --watch db.json --port 3000
 ```
 
 ## Rodar os testes unitários
