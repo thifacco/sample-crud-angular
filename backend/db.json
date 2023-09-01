@@ -65,14 +65,6 @@
       "pages": "300"
     },
     {
-      "id": "r0lpyhNNJlx-Wtaym4pbh",
-      "title": null,
-      "author": null,
-      "publishing_company": null,
-      "release_year": null,
-      "pages": null
-    },
-    {
       "id": "LWerxsQsbTxYJuBI2ofgX",
       "title": "Mais Tempo Mais Dinheiro",
       "author": "Gustavo Cerbasi",
@@ -87,20 +79,6 @@
       "release_year": "2022",
       "pages": "200",
       "id": 4
-    },
-    {
-      "id": 5,
-      "title": "oi",
-      "author": "oi",
-      "publishing_company": "oi",
-      "release_year": "2000",
-      "pages": "22"
-    },
-    {
-      "id": 6
-    },
-    {
-      "id": 7
     },
     {
       "title": "Os 7 Hábitos",

@@ -51,4 +51,10 @@ export class BookService {
       catchError(this.handleError)
     );
   }
+
+  delete(bookId: string) {
+    return this.http.delete(this.bookAPI + '/' + bookId).pipe(
+      catchError(this.handleError)
+    );
+  }
 }

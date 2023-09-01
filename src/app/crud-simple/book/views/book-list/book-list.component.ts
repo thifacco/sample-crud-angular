@@ -13,4 +13,11 @@ export class BookListComponent {
   );
   
   constructor(private bookService: BookService) {}
+
+  deleteBook(bookId: string) {
+    this.bookService.delete(bookId).subscribe({
+      next: () => console.log('Livro excluído com sucesso'),
+      error: (err) => console.warn(err)
+    })
+  }
 }
