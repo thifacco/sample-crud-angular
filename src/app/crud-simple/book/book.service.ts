@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { environment } from 'src/environments/environment.development';
-import { Observable } from 'rxjs';
-import { IBook } from './book';
+import { Observable, catchError, throwError } from 'rxjs';
+import { Book } from './book';
 
 @Injectable({
   providedIn: 'root'
@@ -13,11 +13,29 @@ export class BookService {
 
   constructor(private http: HttpClient) { }
 
-  getAll(): Observable<IBook> {
-    return this.http.get<IBook>(this.bookAPI);
+  private handleError(error: HttpErrorResponse) {
+    if (error.error instanceof ErrorEvent) {
+      // erro no cliente ou rede
+      console.error('Ops, ocorreu um erro:', error.error.message);
+    } else {
+      // erro no backend ou response body
+      console.error(
+        `Backend retornou erro código ${error.status}, ` +
+        `Response body: ${error.error}`);
+    }
+    // retorna um observable com um user-facing error message
+    return throwError(() => new Error('Something bad happened; please try again later.'));
+  };
+
+  getAll(): Observable<Book> {
+    return this.http.get<Book>(this.bookAPI).pipe(
+      catchError(this.handleError)
+    );
   }
 
-  create(book: IBook): Observable<IBook> {
-    return this.http.post<IBook>(this.bookAPI, book);
+  create(book: Book): Observable<Book> {
+    return this.http.post<Book>(this.bookAPI, book).pipe(
+      catchError(this.handleError)
+    );
   }
 }
