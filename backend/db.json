@@ -79,6 +79,39 @@
       "publishing_company": "Alta Books",
       "release_year": "2000",
       "pages": "200"
+    },
+    {
+      "title": "O Homem Mais Rico da Babilônia",
+      "author": "George S. Clason",
+      "publishing_company": "H1",
+      "release_year": "2022",
+      "pages": "200",
+      "id": 4
+    },
+    {
+      "id": 5
+    },
+    {
+      "id": 6
+    },
+    {
+      "id": 7
+    },
+    {
+      "title": "Os 7 Hábitos",
+      "author": "Stephen Courey",
+      "publishing_company": "Alta",
+      "release_year": 1901,
+      "pages": "500",
+      "id": 8
+    },
+    {
+      "id": "1Zqg8iWpu1RoV7QbXQz9J",
+      "title": "Inteligência Visual",
+      "author": "A.E. Herman",
+      "publishing_company": "Alta",
+      "release_year": "2000",
+      "pages": "300"
     }
   ]
 }

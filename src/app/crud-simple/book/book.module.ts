@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { BookRoutingModule } from './book-routing.module';
 import { BookComponent } from './book.component';
 import { BookListComponent } from './views/book-list/book-list.component';
-import { BookCreateComponent } from './views/book-create/book-create.component';
+import { BookFormComponent } from './views/book-form/book-form.component';
 import { BookService } from './book.service';
 import { MatTableModule } from '@angular/material/table';
 import { HttpClientModule } from '@angular/common/http';
@@ -18,7 +18,7 @@ import { MatButtonModule } from '@angular/material/button';
   declarations: [
     BookComponent,
     BookListComponent,
-    BookCreateComponent
+    BookFormComponent
   ],
   imports: [
     CommonModule,
