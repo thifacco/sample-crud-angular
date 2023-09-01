@@ -37,12 +37,9 @@ export class BookFormComponent implements OnInit {
   onSubmit() {
     console.log(this.bookForm.value);
 
-    try {
-      this.bookService.create(this.bookForm.value).subscribe(() => this.router.navigate(['/books/list']));
-    }
-    catch(exception) {
-      throw exception;
-    }
-    
+    this.bookService.create(this.bookForm.value).subscribe({
+      next: () => this.router.navigate(['/books/list']),
+      error: (err) => console.warn(err)
+    });
   }
 }
