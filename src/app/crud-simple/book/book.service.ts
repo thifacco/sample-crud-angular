@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { environment } from 'src/environments/environment.development';
-import { Observable, catchError, throwError } from 'rxjs';
+import { Observable, catchError, tap, throwError } from 'rxjs';
 import { Book } from './book';
 
 @Injectable({
@@ -33,8 +33,21 @@ export class BookService {
     );
   }
 
+  getById(bookId: string) {
+    return this.http.get<Book>(this.bookAPI + '/' + bookId).pipe(
+      tap(console.log),
+      catchError(this.handleError)
+    );
+  }
+
   create(book: Book): Observable<Book> {
     return this.http.post<Book>(this.bookAPI, book).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  update(book: Book): Observable<Book> {
+    return this.http.put<Book>(this.bookAPI + '/' + book.id, book).pipe(
       catchError(this.handleError)
     );
   }

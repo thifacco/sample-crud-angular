@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BookService } from '../../book.service';
 import { Book } from '../../book';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-book-create',
@@ -12,15 +12,31 @@ import { Router } from '@angular/router';
 export class BookFormComponent implements OnInit {
 
   bookForm!: FormGroup;
+  bookId: string | undefined;
 
   constructor(
     private bookService: BookService,
     private formBuilder: FormBuilder,
-    private router: Router
+    private router: Router,
+    private activatedRouter: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
-    this.createForm(new Book());
+    this.activatedRouter.paramMap.subscribe({
+      next: (data) => {
+        if (typeof data.get('id') !== 'undefined') {
+          this.bookId = data.get('id') || '';
+
+          this.bookService.getById(this.bookId).subscribe({
+            next: (data) => this.createForm(data),
+            error: (err) => console.warn(err)
+          })
+        }
+        else {
+          this.createForm(new Book());
+        }
+      }
+    });
   }
 
   createForm(book: Book) {
@@ -32,14 +48,25 @@ export class BookFormComponent implements OnInit {
       release_year: [book.release_year, Validators.required],
       pages: [book.pages, Validators.required]
     });
+    console.log(this.bookForm);
   }
 
   onSubmit() {
     console.log(this.bookForm.value);
 
-    this.bookService.create(this.bookForm.value).subscribe({
-      next: () => this.router.navigate(['/books/list']),
-      error: (err) => console.warn(err)
-    });
+    if (this.bookId) {
+      // update
+      this.bookService.update(this.bookForm.value).subscribe({
+        next: () => this.router.navigate(['/books/list']),
+        error: (err) => console.warn(err)
+      })
+    }
+    else {
+      // create
+      this.bookService.create(this.bookForm.value).subscribe({
+        next: () => this.router.navigate(['/books/list']),
+        error: (err) => console.warn(err)
+      });
+    }
   }
 }

@@ -1,4 +1,6 @@
-<form [formGroup]="bookForm" (ngSubmit)="onSubmit()">
+<form *ngIf="bookForm" [formGroup]="bookForm" (ngSubmit)="onSubmit()">
+
+   <input type="hidden" formControlName="id">
 
    <mat-form-field>
       <mat-label>Título</mat-label>

@@ -16,7 +16,9 @@
          <td>{{ book.publishing_company }}</td>
          <td>{{ book.release_year }}</td>
          <td>{{ book.pages }}</td>
-         <td></td>
+         <td>
+            <a target="_top" mat-raised-button color="primary" [routerLink]="['../edit', book.id]">Editar</a>
+         </td>
       </tr>
    </tbody>
 </table>
