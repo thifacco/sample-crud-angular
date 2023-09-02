@@ -10,14 +10,16 @@
       </tr>
    </thead>
    <tbody>
-      <tr *ngFor="let book of bookList$ | async as books">
+      <tr *ngFor="let book of books">
          <td>{{ book.title }}</td>
          <td>{{ book.author }}</td>
          <td>{{ book.publishing_company }}</td>
          <td>{{ book.release_year }}</td>
          <td>{{ book.pages }}</td>
          <td class="actions">
-            <a target="_top" mat-raised-button color="primary" [routerLink]="['../edit', book.id]">Editar</a>
+            <!-- <a target="_top" mat-raised-button color="primary" [routerLink]="['../edit', book.id]">Editar</a> -->
+
+            <button mat-raised-button color="primary" (click)="editBook(book.id)">Editar</button>
 
             <button mat-raised-button color="warn" (click)="deleteBook(book.id)">Excluir</button>
          </td>
