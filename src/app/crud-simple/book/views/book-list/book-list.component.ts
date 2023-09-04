@@ -3,6 +3,7 @@ import { Subscription, map, tap } from 'rxjs';
 import { BookService } from '../../book.service';
 import { Router } from '@angular/router';
 import { Book } from '../../book';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-book-list',
@@ -21,7 +22,8 @@ export class BookListComponent implements OnInit, OnDestroy {
   
   constructor(
     private bookService: BookService,
-    private router: Router
+    private router: Router,
+    public dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -33,13 +35,15 @@ export class BookListComponent implements OnInit, OnDestroy {
   }
 
   deleteBook(bookId: string) {
-    this.bookService.delete(bookId).subscribe({
-      next: () => {
-        console.log('Livro excluído com sucesso');
-        this.subscription = this.bookList$.subscribe();
-      },
-      error: (err) => console.warn(err)
-    })
+    if (confirm('Você deseja excluir esse livro?') == true) {
+      this.bookService.delete(bookId).subscribe({
+        next: () => {
+          console.log('Livro excluído com sucesso');
+          this.subscription = this.bookList$.subscribe();
+        },
+        error: (err) => console.warn(err)
+      })
+    }
   }
 
   ngOnDestroy(): void {
