@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { environment } from 'src/environments/environment.development';
 import { Observable, catchError, tap, throwError } from 'rxjs';
@@ -10,6 +10,8 @@ import { Book } from './book';
 export class BookService {
 
   private readonly bookAPI = `${environment.databaseURL}/books`;
+
+  public static message = new EventEmitter<string>();
 
   constructor(private http: HttpClient) { }
 

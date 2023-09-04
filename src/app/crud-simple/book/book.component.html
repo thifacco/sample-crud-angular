@@ -9,6 +9,8 @@
    </mat-list-item>
 </mat-list>
 
+<p class="message" *ngIf="message?.length">{{ message }}</p>
+
 <div class="content-block">
    <router-outlet></router-outlet>
 </div>

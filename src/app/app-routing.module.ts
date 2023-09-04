@@ -7,7 +7,7 @@ const routes: Routes = [
     loadChildren: () => import('./home/home.module').then((routes) => routes.HomeModule)
   },
   {
-    path: 'books',
+    path: 'crud-simple/books',
     loadChildren: () => import('./crud-simple/book/book.module').then((routes) => routes.BookModule)
   }
 ];

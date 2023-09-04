@@ -4,12 +4,14 @@ Essa aplicação é uma amostra de como desenvolver um CRUD simples com Angular 
 
 ## Iniciar a aplicação
 ```
+npm install
 npm start
 ```
 
 Iniciar o backend: 
 ```
 cd ./backend
+npm install
 json-server --watch db.json --port 3000
 ```
 

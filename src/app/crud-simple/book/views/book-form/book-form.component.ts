@@ -57,14 +57,20 @@ export class BookFormComponent implements OnInit {
     if (this.bookId) {
       // update
       this.bookService.update(this.bookForm.value).subscribe({
-        next: () => this.router.navigate(['/books/list']),
+        next: () => {
+          BookService.message.emit('Livro editado com sucesso!');
+          this.router.navigate(['/crud-simple/books/list'])
+        },
         error: (err) => console.warn(err)
       })
     }
     else {
       // create
       this.bookService.create(this.bookForm.value).subscribe({
-        next: () => this.router.navigate(['/books/list']),
+        next: () => {
+          BookService.message.emit('Livro criado com sucesso!');
+          this.router.navigate(['/crud-simple/books/list'])
+        },
         error: (err) => console.warn(err)
       });
     }

@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Subscription, map, tap } from 'rxjs';
 import { BookService } from '../../book.service';
 import { Router } from '@angular/router';
@@ -31,14 +31,14 @@ export class BookListComponent implements OnInit, OnDestroy {
   }
 
   editBook(bookId: string) {
-    this.router.navigate(['/books/edit', bookId]);
+    this.router.navigate(['/crud-simple/books/edit', bookId]);
   }
 
   deleteBook(bookId: string) {
     if (confirm('Você deseja excluir esse livro?') == true) {
       this.bookService.delete(bookId).subscribe({
         next: () => {
-          console.log('Livro excluído com sucesso');
+          BookService.message.emit('Livro excluído com sucesso!');
           this.subscription = this.bookList$.subscribe();
         },
         error: (err) => console.warn(err)
